@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<title>{% block title %}Users{% endblock %}</title>
+{% block content %}
+
+<div class="div row container">
+    <div class=" div col-12 text-center">
+        <h1>Users</h1>
+    </div>
+</div>
+
+
+<div class="div row container">
+
+    {% for user in users %}
+    <div class="col-6 text-right">
+        {{user.first_name}} {{user.last_name}}
+    </div>
+    <div class="col-6">
+        <a href="javascript:postForm()">
+            <form id="frmMain" style="display: inline" action="/users/{{user.username}}/delete" method="post">
+                <i class="fa-solid fa-trash"></i>
+            </form>
+        </a>
+    </div>
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}
